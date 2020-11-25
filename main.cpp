@@ -31,11 +31,11 @@ int main()
     while(what_tp != -1)
     {
     std::cout <<"<<<<<<<<<<<<<<<<<<<<<<<<<<" <<std::endl;
-    std::cout <<"Сейчас на планете "<< player.get_current_planet() << " На ней порталов "<< planet_game[current_id_planet].get_number_of_portals() <<std::endl;
+    std::cout <<"Сейчас на планете "<< player.get_current_planet() << " На ней порталов "<< planet_game[player.get_current_id()].get_number_of_portals() <<std::endl;
 
     std::cout <<"Выберете номер портала для перехода:" <<std::endl;
     std::cout <<"Вы помните что порталы ведут:" <<std::endl;
-    planet_game[current_id_planet].print_whereTO_portals();
+    planet_game[player.get_current_id()].print_whereTO_portals();
     std::cin >> what_tp;
 
     step_to_portal(what_tp, player, planet_game);  // нужна проверка на тп

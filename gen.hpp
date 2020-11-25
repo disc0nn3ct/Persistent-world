@@ -41,7 +41,7 @@ public:
     std::vector<std::pair<uint, uint>> const &get_vector_whereTo() const;
     void add_to_vector_pair_whereTo(std::pair<uint, uint> const &par);
     uint how_many_portals_are_fee();
-    uint choose_free_portail_for_transport() ;   // убрать стд вектор верту
+    uint choose_free_portail_for_transport() ;
     static uint is_tp_on_planet(uint num ,std::vector<std::pair<uint, uint>>const &whereTO);   // если есть то вернет куда, если нет 0
     void print_whereTO_portals();
 

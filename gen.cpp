@@ -65,9 +65,9 @@ unsigned int planet::get_number_of_planet()
 std::vector<std::pair<uint, uint>> const &planet::get_vector_whereTo() const  // запрет на попытки изменить объект через указатель
 {return whereTO; }
 
-void planet::add_to_vector_pair_whereTo(std::pair<uint, uint> const par)
+void planet::add_to_vector_pair_whereTo(std::pair<uint, uint> const& par)
 {
-    std::cout << "СООООООООООООООЗДаю пару " << par.first << " ", par.second <<std::endl;
+    std::cout << "СООООООООООООООЗДаю пару " << par.first << " " << par.second <<std::endl;
     this->whereTO.push_back(par);
 }
 
@@ -125,8 +125,8 @@ uint is_planet_unique(uint num, std::vector<planet> &planet_game)  // верне
 
 void planet::print_whereTO_portals()
 {
-    if(whereTO.size() == 0)
-        std::cout << "Вам ничего не известно =С " << std::endl;
+    if(this->whereTO.size() == 0)
+        std::cout << "Вам ничего не известно =С " << whereTO.size()<< std::endl;
     else
     {
         for(int i =0; i < whereTO.size(); i++ )
