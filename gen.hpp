@@ -18,8 +18,6 @@ public:
     void set_current_planet(int N);
     int get_current_planet();
 
-//    void set_current_id(int N);
-//    int get_current_id();
     adventurer();
 private:
 
@@ -54,21 +52,9 @@ private:
 
 
 int is_planet_unique(int num, std::vector<planet> &planet_game );  // вернет id планеты, если не существует 0
-
-
-//void step(adventurer &player, std::vector<planet> &planet_game );
-
-//void step_to_portal(int num_of_portal, adventurer &player, std::vector<planet> &planet_game );
-
 int step_to_new_portal(int num_of_portal, adventurer &player, std::vector<planet> &planet_game );
 void step_to_portal(adventurer &player, int planet_N);
-
 int spirit_of_verification(int max_num_planet, std::vector<planet> &planet_game);
-
-
-
-
-
 
 
 
