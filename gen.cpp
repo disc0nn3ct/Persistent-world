@@ -23,17 +23,6 @@ int adventurer::get_current_planet()
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 void planet::set_number_of_planet(int N_planet)
 {
     this->N_planet = N_planet;
@@ -162,7 +151,7 @@ int spirit_of_verification(int max_num_planet, std::vector<planet> &planet_game)
 
 int step_to_new_portal(int num_of_portal, adventurer &player, std::vector<planet> &planet_game)
 {
-    int max_N_of_planet=3;   // макс число планет в игре
+    int max_N_of_planet=10;   // макс число планет в игре
     int to_planet =  random(1, max_N_of_planet);
     int checker = 0;
 ////////////////////////////////////////////////////////////////////////////////
@@ -230,9 +219,6 @@ void step_to_portal(adventurer &player, int planet_N)
 
 
 
-
-
-
 int save_game(const adventurer &player, const std::vector<planet> &planet_game)
 {
     std::ofstream ofs("../Persistent-world/save");
@@ -252,39 +238,97 @@ int load_game(adventurer &player, std::vector<planet> &planet_game)
     return 0;
 }
 
-
-int play(int k)
+int user_play_or_bot() // вернет 0, если user play, -1 ошибка, либо вернет число ходов для бота
 {
-    planet zeroo;
-    adventurer player;
-    zeroo.set_number_of_planet(player.get_current_planet());
-//    std::cout<< "число порталов в начале " << zeroo.get_number_of_portals() << " игрок на планете = "<<  player.get_current_planet() << " планета N " << zeroo.get_number_of_planet()  <<std::endl << std::endl;
+    int k=-3;
+    while( k>1 || k <0)
+    {
+        std::cout << "Вы хотите включить бота? 1=да; 0=нет ";
+        std::cin >> k;
+        if(k==0)
+            return 0;
+        else
+        {
+            std::cout << "Сколько шагов боту? Шагов > 0: ";
+            std::cin >> k;
+            while(k <=0)
+            {
+                std::cout << "Сколько шагов боту? Шагов > 0: ";
+                std::cin >> k;
+            }
+            return k;
 
-    std::vector<planet> planet_game;
-    planet_game.push_back(zeroo);
+        }
+    }
+
+    return -1;
+}
+
+int play(int k, adventurer &player, std::vector<planet> &planet_game)
+{
+    if(k == 0) // новая игра
+    {
+        planet zeroo;
+//    adventurer player;
+        zeroo.set_number_of_planet(player.get_current_planet());
+//    std::vector<planet> planet_game;
+        planet_game.push_back(zeroo);
+
+    }
+    if(k ==1)
+    {
+        // идет лоад
+        std::cout<< "загрузка"<<std::endl;
+        k =0; // user play
+    }
+
     int current_id_planet = is_planet_unique(player.get_current_planet(), planet_game);
 
     int what_tp = 0;
 
-    while(what_tp != -1)
+    int c = 0;
+    k = user_play_or_bot();
+    if (k>0)
+        c++;
+
+    while(what_tp != -1 && c <= k)
+//    while(what_tp != -1)
     {
         planet_game[is_planet_unique(player.get_current_planet(), planet_game)].print_whereTO_portals();
 
         std::cout<<"Выберите портал 1 до " << planet_game[is_planet_unique(player.get_current_planet(), planet_game)].get_number_of_portals() << ": ";
 
+
+        if(k == 0)  // user game
+        {
         std::cin >> what_tp; // проверку на ввод
         while(what_tp > planet_game[is_planet_unique(player.get_current_planet(), planet_game)].get_number_of_portals()) // минимальная проверка на ввод
         {
-            std::cout << "Выберите портал из диапазона! 1 до " << planet_game[is_planet_unique(player.get_current_planet(), planet_game)].get_number_of_portals() << ": ";
+            std::cout << "-1 exit. -2 save & exit. Выберите портал из диапазона! 1 до " << planet_game[is_planet_unique(player.get_current_planet(), planet_game)].get_number_of_portals() << ": ";
             std::cin >> what_tp;
             std::cout << std::endl;
         }
+        }
+        else
+        {
+            what_tp = random(1, planet_game[is_planet_unique(player.get_current_planet(), planet_game)].get_number_of_portals());
+            std::cout << "Бот выбрал портал N "<< what_tp <<std::endl;
+            c++;
+        }
+        if(what_tp == -2)
+        {
+            std::cout<< "Save" ;
+            save_game(player, planet_game);
+            break;
+        }
+
 
         if(planet_game[is_planet_unique(player.get_current_planet(), planet_game)].is_tp_on_planet(what_tp) == -1)
         {
+
             std::cout<< "Нет такого телепорта"<< std::endl;
             int fl = step_to_new_portal(what_tp, player, planet_game);  // нужна проверка на тп
-            std::cout<< fl << std::endl;
+//            std::cout<< fl << std::endl;
             if(fl == -1)
             {
                 save_game(player, planet_game);
@@ -300,8 +344,26 @@ int play(int k)
         }
 
     }
+    if( k != 0 )
+    {
+        std::cout <<"Бот закончил на планете: " << player.get_current_planet() <<std::endl;
+        k=-3;
+        while( k>1 || k <0)
+        {
+            std::cout << "Хотите сохранить игру бота? 1=Да; 0=Нет: ";
+            std::cin >> k;
+            if(k==0)
+                return 0;
+            else
+            {
+                save_game(player, planet_game);
+                return 0;
 
-    save_game(player, planet_game);
+            }
+        }
+
+    }
+
 
 
 

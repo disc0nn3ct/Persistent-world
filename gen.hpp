@@ -101,7 +101,11 @@ int spirit_of_verification(int max_num_planet, std::vector<planet> &planet_game)
 int save_game(const adventurer &player, const std::vector<planet> &planet_game);
 int load_game(adventurer &player, std::vector<planet> &planet_game);
 
-int play(int k);
+int user_play_or_bot();
+
+
+int play(int k, adventurer &player, std::vector<planet> &planet_game);
+
 
 
 #endif
