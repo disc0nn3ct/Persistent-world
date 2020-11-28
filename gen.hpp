@@ -17,6 +17,8 @@
 #include <boost/serialization/complex.hpp>
 #include <boost/serialization/utility.hpp> // для pair
 #include <boost/serialization/vector.hpp>
+#include <boost/serialization/string.hpp>
+
 
 
 int random(int min, int max);
@@ -38,7 +40,6 @@ private:
         ar & N_planet;
     }
     int N_planet;
-//    string Name;
 };
 
 
@@ -66,11 +67,14 @@ private:
         ar & planet_color;
         ar & N_of_portals;
         ar & whereTO;
+        ar & color;
     }
     int N_planet; // номер планеты
     std::string planet_color;  // цвет планеты
     int N_of_portals; // кол-во порталов
     std::vector<std::pair<int, int>> whereTO;
+    std::string color;
+
 
 };
 

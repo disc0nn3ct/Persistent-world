@@ -21,8 +21,6 @@ int adventurer::get_current_planet()
     return N_planet;
 }
 
-
-
 void planet::set_number_of_planet(int N_planet)
 {
     this->N_planet = N_planet;
@@ -33,7 +31,7 @@ int planet::get_number_of_portals()
     return N_of_portals;
 }
 
-planet::planet() : N_of_portals(random(1, 3)) // тут задается макс число порталов
+planet::planet() : N_of_portals(random(1, 150)), color("red")  // тут задается макс число порталов
 { }
 
 int planet::get_number_of_planet()
@@ -46,7 +44,6 @@ std::vector<std::pair<int, int>> const &planet::get_vector_whereTo() const  // �
 
 void planet::add_to_vector_pair_whereTo(std::pair<int, int> const& par)
 {
-//    std::cout << "СООООООООООООООЗДаю пару " << par.first << " " << par.second <<std::endl;
     this->whereTO.push_back(par);
 }
 
@@ -151,7 +148,7 @@ int spirit_of_verification(int max_num_planet, std::vector<planet> &planet_game)
 
 int step_to_new_portal(int num_of_portal, adventurer &player, std::vector<planet> &planet_game)
 {
-    int max_N_of_planet=10;   // макс число планет в игре
+    int max_N_of_planet=1500;   // макс число планет в игре
     int to_planet =  random(1, max_N_of_planet);
     int checker = 0;
 ////////////////////////////////////////////////////////////////////////////////
@@ -372,28 +369,6 @@ int play(int k, adventurer &player, std::vector<planet> &planet_game)
 
     return 0;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
