@@ -78,24 +78,6 @@ private:
 
 };
 
-//class universe
-//{
-//public:
-//    universe() {};
-
-//private:
-//friend class boost::serialization::access;
-
-//std::vector<planet *> planet_game;
-//template<class Archive>
-//void serialize(Archive & ar, const unsigned int version)
-//{
-//    ar & planet_game;
-//}
-
-//};
-
-
 
 int is_planet_unique(int num, std::vector<planet> &planet_game );  // вернет id планеты, если не существует 0
 int step_to_new_portal(int num_of_portal, adventurer &player, std::vector<planet> &planet_game );
