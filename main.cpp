@@ -13,12 +13,12 @@ int main()
 //       int k=-1;
 //       while(k != 0 || k != 1)
 //       {
-//           std::cout << "Нажмите 0 своей игры; 1 для игры ботом" << std::endl;
+//           std::cout << "Нажмите 0 новой игры; 1 загрузки" << std::endl;
 //           std::cin >> k;
 //       }
 //       if(k == 0)
 //       {
-//            if(play() == 0)
+//            if(play(0) == 0)
 //                std::cout << "Успешно"<< std::endl;
 //       }
 //       else
@@ -29,7 +29,7 @@ int main()
 //               std::cout << "Введите кол-во шагов для бота" << std::endl;
 //               std::cin >> k;
 //           }
-//            if(play(k) == 0)
+//           if(play(k) == 0)
 //                std::cout << "Успешно"<< std::endl;
 //           // TODO LOAD
 //       }
@@ -48,7 +48,8 @@ int main()
     load_game(player, planet_game);
 
     std::cout<< "ux" << player.get_current_planet() <<std::endl;
-
+    std::cout<< "tp on planet: " <<std::endl;
+    planet_game[is_planet_unique(player.get_current_planet(), planet_game)].print_whereTO_portals();
 
 
 
