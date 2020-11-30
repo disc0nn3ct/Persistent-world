@@ -1,10 +1,12 @@
-cmake_minimum_required(VERSION 3.5)
+cmake_minimum_required(VERSION 3.5 FATAL_ERROR)
 
 project(Persistent-world LANGUAGES CXX)
-set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(Boost 1.55 REQUIRED system serialization)
+add_executable(${PROJECT_NAME} main.cpp gen.cpp gen.hpp)
+target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_20)
+set_target_properties(${PROJECT_NAME} PROPERTIES CXX_EXTENSIONS OFF)
 
-add_executable(Persistent-world main.cpp gen.cpp gen.hpp)
-target_link_libraries(Persistent-world ${Boost_LIBRARIES} )
+find_package(Boost 1.5 REQUIRED COMPONENTS serialization)
+target_link_libraries(${PROJECT_NAME} PRIVATE Boost::serialization)
+
+message( STATUS "Boost_LIBRARIES = ${Boost_LIBRARIES}")
