@@ -33,7 +33,6 @@ BENCHMARK("Save 100") {
 
 BENCHMARK("Load 100") {
     return load_game(for_load_player, for_load_planet_game);
-
 };
 
 BENCHMARK("Save 1000") {
@@ -42,7 +41,6 @@ BENCHMARK("Save 1000") {
 
 BENCHMARK("Load 1000") {
     return load_game(for_load_player2, for_load_planet_game2);
-
 };
 }
 
