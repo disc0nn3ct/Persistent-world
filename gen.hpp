@@ -18,10 +18,7 @@
 #include <boost/serialization/vector.hpp>
 #include <boost/serialization/string.hpp>
 
-
-
 int random(int min, int max);
-
 
 class adventurer
 {
@@ -40,7 +37,6 @@ private:
     }
     int N_planet;
 };
-
 
 class planet
 {
@@ -73,8 +69,6 @@ private:
     int N_of_portals; // кол-во порталов
     std::vector<std::pair<int, int>> whereTO;
     std::string color;
-
-
 };
 
 
@@ -88,10 +82,8 @@ int load_game(adventurer &player, std::vector<planet> &planet_game);
 
 int user_play_or_bot();
 
-
 int play(int k, adventurer &player, std::vector<planet> &planet_game, int f=0);
 void clear_for_cin();
-
 
 
 #endif

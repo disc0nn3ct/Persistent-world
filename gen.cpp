@@ -142,8 +142,6 @@ bool spirit_of_verification(int max_num_planet, std::vector<planet> &planet_game
     }
 }
 
-
-
 int step_to_new_portal(int num_of_portal, adventurer &player, std::vector<planet> &planet_game)
 {
     int max_N_of_planet=1500;   // макс число планет в игре
@@ -153,10 +151,7 @@ int step_to_new_portal(int num_of_portal, adventurer &player, std::vector<planet
 
 while(player.get_current_planet() == to_planet || (planet_game[is_planet_unique(to_planet, planet_game)].how_many_portals_are_fee() == 0 &&  is_planet_unique(to_planet, planet_game) != -1))
     {
-//        std::cout << " поиск  было на " << to_planet;
     to_planet =  random(1, max_N_of_planet);
-//        std::cout << " теперь на " << to_planet << std::endl;
-//        std::cout << " Размер "<< max_N_of_planet << " рамер щас " << planet_game.size()  <<" на планету" << to_planet << std::endl;
 
     if( max_N_of_planet <= planet_game.size())
     {
@@ -198,7 +193,6 @@ while(player.get_current_planet() == to_planet || (planet_game[is_planet_unique(
             std::cout << "Error" <<std::endl;
             return -1;
         }
-
     }
 return 0;
 }
@@ -250,7 +244,6 @@ int user_play_or_bot() // вернет 0, если user play, -1 ошибка, �
             clear_for_cin();
         }
         return k;
-
     }
     return -1;
 }
@@ -290,16 +283,10 @@ int play(int k, adventurer &player, std::vector<planet> &planet_game, int f)
         c++;
 
     while(what_tp != -1 && c <= k)
-//    while(what_tp != -1)
     {
         planet_game[is_planet_unique(player.get_current_planet(), planet_game)].print_whereTO_portals();
-
-//        std::cout<<"Выберите портал 1 до " << planet_game[is_planet_unique(player.get_current_planet(), planet_game)].get_number_of_portals() << ": ";
-
-
         if(k == 0)  // user game
         {
-//        std::cin >> what_tp; // проверку на ввод
         while(std::cout << "Команды: -1 exit. -2 save & exit. Выберите портал из диапазона! 1 до " << planet_game[is_planet_unique(player.get_current_planet(), planet_game)].get_number_of_portals() << ": " , !(std::cin >> what_tp)  || what_tp > planet_game[is_planet_unique(player.get_current_planet(), planet_game)].get_number_of_portals()) // минимальная проверка на ввод
         {
             clear_for_cin();
@@ -336,9 +323,7 @@ int play(int k, adventurer &player, std::vector<planet> &planet_game, int f)
         {
             std::cout<< "есть такой портал, проверка переходит на планету c"<<  planet_game[is_planet_unique(player.get_current_planet(), planet_game)].is_tp_on_planet(what_tp) << " id планеты "<< is_planet_unique(player.get_current_planet(), planet_game) << " на планету " << planet_game[is_planet_unique(player.get_current_planet(), planet_game)].is_tp_on_planet(what_tp) << " id этой планеты " << is_planet_unique( planet_game[is_planet_unique(player.get_current_planet(), planet_game)].is_tp_on_planet(what_tp) ,planet_game )  << std::endl;
             step_to_portal(player, planet_game[is_planet_unique(player.get_current_planet(), planet_game)].is_tp_on_planet(what_tp) );
-//            planet_game[is_planet_unique(player.get_current_planet(), planet_game)].print_whereTO_portals();
         }
-
     }
     if( k != 0 && f == 0)
     {
@@ -360,13 +345,3 @@ int play(int k, adventurer &player, std::vector<planet> &planet_game, int f)
 
     return 0;
 }
-
-
-
-
-
-
-
-
-
-
