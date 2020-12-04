@@ -1,4 +1,3 @@
-//#pragma once // ?
 #ifndef _gen_HPP
 #define _gen_HPP
 #include <string>
@@ -49,7 +48,7 @@ public:
     planet();
 
     int get_number_of_portals();
-    void set_number_of_planet(int N_planet);
+    void set_number_of_planet(int N_plan);
     int get_number_of_planet();
     std::vector<std::pair<int, int>> const &get_vector_whereTo() const;
     void add_to_vector_pair_whereTo(std::pair<int, int> const &par);
@@ -82,7 +81,7 @@ private:
 int is_planet_unique(int num, std::vector<planet> &planet_game );  // вернет id планеты, если не существует 0
 int step_to_new_portal(int num_of_portal, adventurer &player, std::vector<planet> &planet_game );
 void step_to_portal(adventurer &player, int planet_N);
-int spirit_of_verification(int max_num_planet, std::vector<planet> &planet_game);
+bool spirit_of_verification(int max_num_planet, std::vector<planet> &planet_game);
 
 int save_game(const adventurer &player, const std::vector<planet> &planet_game);
 int load_game(adventurer &player, std::vector<planet> &planet_game);
@@ -90,7 +89,8 @@ int load_game(adventurer &player, std::vector<planet> &planet_game);
 int user_play_or_bot();
 
 
-int play(int k, adventurer &player, std::vector<planet> &planet_game);
+int play(int k, adventurer &player, std::vector<planet> &planet_game, int f=0);
+void clear_for_cin();
 
 
 
