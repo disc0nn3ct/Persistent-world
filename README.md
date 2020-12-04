@@ -13,3 +13,5 @@ Persistent world on Boost.Serialization + catch2 v3
 
 [https://github.com/disc0nn3ct/Persistent-world/blob/main/LOG_catch2v3.txt](LOG_catch2v3.txt) 
 
+![график вывода](schedule_of_LOG_1.png)
+

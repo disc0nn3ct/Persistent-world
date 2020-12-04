@@ -15,14 +15,20 @@ TEST_CASE("Persistent world")
 std::vector<planet> for_save_planet_game;
 adventurer for_save_player;
 play(0, for_save_player, for_save_planet_game, 100);
-
 std::vector<planet> for_load_planet_game;
 adventurer for_load_player;
+
+std::vector<planet> for_save_planet_game1;
+adventurer for_save_player1;
+play(0, for_save_player1, for_save_planet_game1, 500);
+
+std::vector<planet> for_load_planet_game1;
+adventurer for_load_player1;
+
 
 std::vector<planet> for_save_planet_game2;
 adventurer for_save_player2;
 play(0, for_save_player2, for_save_planet_game2, 1000);
-
 std::vector<planet> for_load_planet_game2;
 adventurer for_load_player2;
 
@@ -33,6 +39,13 @@ BENCHMARK("Save 100") {
 
 BENCHMARK("Load 100") {
     return load_game(for_load_player, for_load_planet_game);
+};
+BENCHMARK("Save 500") {
+    return save_game(for_save_player1, for_save_planet_game1);
+};
+
+BENCHMARK("Load 500") {
+    return load_game(for_load_player1, for_load_planet_game1);
 };
 
 BENCHMARK("Save 1000") {
