@@ -9,8 +9,6 @@ Persistent world on Boost.Serialization + catch2 v3
 [**Boost.Serialization**](https://www.boost.org/doc/libs/1_72_0/libs/serialization/doc/tutorial.html)
 
 Отчет: 
-
 [LOG_1_catch2v3.txt](https://github.com/disc0nn3ct/Persistent-world/blob/main/LOG_1_catch2v3.txt) 
-
-![график вывода](schedule_of_LOG_1.png)
+![график вывода](log&graph/graph_of_LOG_1.png)
 
