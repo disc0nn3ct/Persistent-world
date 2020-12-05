@@ -11,7 +11,9 @@ Persistent world on Boost.Serialization + catch2 v3
 Отчет: 
 [LOG_1_catch2v3.txt](https://github.com/disc0nn3ct/Persistent-world/blob/main/log%26graph/LOG_1_catch2v3.txt) 
 ![график вывода](log&graph/graph_of_LOG_1.png)
+
 В y_Log координатах: 
+
 ![график вывода в логарифмических координатах](log&graph/graph_of_LOG_1_in_logar.png)
 
 
