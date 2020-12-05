@@ -60,9 +60,13 @@ public:
         return N_planet;
     };
 
-    std::vector<std::pair<int, int>> const &get_vector_whereTo() const;
-    void add_to_vector_pair_whereTo(std::pair<int, int> const &par);
-    int how_many_portals_are_free() const;
+    std::vector<std::pair<int, int>> const &get_vector_whereTo() const {return whereTO; };
+    void add_to_vector_pair_whereTo(std::pair<int, int> const &par){
+        this->whereTO.push_back(par);
+    };
+    int how_many_portals_are_free() const {
+        return N_of_portals - whereTO.size();
+    };
     int choose_free_portail_for_transport() ;
     int is_tp_on_planet(int num) const;   // если есть то вернет куда, если нет 0
     void print_whereTO_portals();

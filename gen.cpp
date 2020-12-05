@@ -5,20 +5,6 @@ int random(int min, int max) {
     return std::uniform_int_distribution<>(min, max)(prng);
 }
 
-
-inline std::vector<std::pair<int, int>> const &planet::get_vector_whereTo() const  // запрет на попытки изменить объект через указатель
-{return whereTO; }
-
-inline void planet::add_to_vector_pair_whereTo(std::pair<int, int> const& par)
-{
-    this->whereTO.push_back(par);
-}
-
-inline int planet::how_many_portals_are_free() const
-{
-    return N_of_portals - whereTO.size();
-}
-
 int planet::choose_free_portail_for_transport()
 {
     if (N_of_portals - whereTO.size() == 0)
